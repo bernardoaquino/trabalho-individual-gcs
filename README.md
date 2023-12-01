@@ -38,10 +38,17 @@ Adicionanando Dependências:
 for item in $(cat requirements.txt); do poetry add "${item}"; done
 ```
 
+Buildando o pacote: (Gerado na pasta Dist)
+
+```bash
+poetry build
+```
+
 #### Publicação do Pacote (Observação):
 
 ```bash
 poetry config http-basic.pypi <username> <password>
+poetry publish
 ```
 
 > _Devido a restrições de criação de conta na plataforma https://pypi.org/, não é possível publicar o pacote no momento._
