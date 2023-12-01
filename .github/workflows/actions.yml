@@ -35,7 +35,7 @@ jobs:
           working-directory: "."
           doxyfile-path: "./doxygen/Doxyfile"
 
-      - name: Gerando Documentação - Doxygen
+      - name: Gerando Documentação - Sphinx
         run: |
           sudo apt-get install python3-sphinx 
           sphinx-apidoc -o sphinx/ src/
