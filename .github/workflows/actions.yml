@@ -17,22 +17,38 @@ jobs:
       - name: Git Checkout
         uses: actions/checkout@v2 # Faz o checkout do código recebido
 
-      - name: Start containers
+      - name: Instalando Python
+        uses: actions/setup-python@v4
+
+      - name: Instalando Poetry
+        uses: snok/install-poetry@v1
+        with:
+          version: 1.2.2
+          virtualenvs-create: true
+          virtualenvs-in-project: false
+          virtualenvs-path: ~/my-custom-path
+          installer-parallel: true
+
+      - name: Gerando Documentação
+        run: |
+          sudo apt-get install doxygen
+          cd doxygen
+          doxygen
+          sudo apt-get install python3-sphinx 
+          sphinx-apidoc -o sphinx/ src/
+          cd sphinx
+          make html
+
+      - name: Testes Unitários
+        run: |
+          pip install pytest
+          pytest tests
+
+      - name: Buildando aplicação
+        run: poetry build
+
+      - name: Buildando containers
         run: docker-compose -f "docker-compose.yml" up -d --build
-
-      # - name: Set up JDK 1.8
-      #   uses: actions/setup-java@v1 # Configura o Java 1.8
-      #   with:
-      #     java-version: 1.8
-
-      # - name: Build
-      #   run: mvn package -Dmaven.test.skip=true # Compila o código fonte
-
-      # - name: Unit Test
-      #   run: mvn test # Executada os testes de unidade
-
-      - name: "Test server"
-        run: docker exec -it app pytest tests
 
       - name: Stop containers
         if: always()
