@@ -32,8 +32,7 @@ jobs:
       #   run: mvn test # Executada os testes de unidade
 
       - name: "Test server"
-        run: |
-          docker exec -it app pytest tests
+        run: docker exec -it app pytest tests
 
       - name: Stop containers
         if: always()
