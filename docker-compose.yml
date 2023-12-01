@@ -12,6 +12,7 @@ services:
       - ./metabase/config/mongo.env
 
   app:
+    container_name: app
     build:
       context: ./
       dockerfile: Dockerfile

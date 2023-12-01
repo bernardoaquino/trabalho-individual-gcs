@@ -33,8 +33,7 @@ jobs:
 
       - name: "Test server"
         run: |
-          docker exec -it app-1 pip install pytest
-          docker exec -it app-1 pytest tests
+          docker exec -it app pytest tests
 
       - name: Stop containers
         if: always()
