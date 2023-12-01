@@ -29,11 +29,14 @@ jobs:
           virtualenvs-path: ~/my-custom-path
           installer-parallel: true
 
-      - name: Gerando Documentação
+      - name: Gerando Documentação - Doxygen
+        uses: mattnotmitt/doxygen-action@v1.9.5
+        with:
+          working-directory: "src/"
+          doxyfile-path: "doxygen/"
+
+      - name: Gerando Documentação - Doxygen
         run: |
-          sudo apt-get install doxygen
-          cd doxygen
-          doxygen
           sudo apt-get install python3-sphinx 
           sphinx-apidoc -o sphinx/ src/
           cd sphinx
