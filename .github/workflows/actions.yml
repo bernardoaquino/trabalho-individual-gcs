@@ -32,8 +32,8 @@ jobs:
       - name: Gerando Documentação - Doxygen
         uses: mattnotmitt/doxygen-action@v1.9.5
         with:
-          working-directory: "src/"
-          doxyfile-path: "doxygen/"
+          working-directory: "."
+          doxyfile-path: "./doxygen/Doxyfile"
 
       - name: Gerando Documentação - Doxygen
         run: |
