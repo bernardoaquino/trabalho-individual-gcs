@@ -44,7 +44,7 @@ for item in $(cat requirements.txt); do poetry add "${item}"; done
 poetry config http-basic.pypi <username> <password>
 ```
 
-> [!CAUTION] > _Devido a restrições na plataforma https://pypi.org/, não é possível publicar o pacote no momento._
+> _Devido a restrições de criação de conta na plataforma https://pypi.org/, não é possível publicar o pacote no momento._
 
 ### Doxygen (Documentação)
 
